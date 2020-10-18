@@ -1,5 +1,5 @@
-input_data: str = input('Enter a word sequence: ')
-need_length: int = int(input('Choose length, which you need: '))
+input_data: str = input('Введите строку: ')
+need_length: int = int(input('Выберите требуемую длину: '))
 
 letters_counter: int = 0
 words_counter: int = 0
