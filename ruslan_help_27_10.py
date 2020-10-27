@@ -1,11 +1,8 @@
-from typing import List
-
-
-numbers: List[int] = list(map(int, input('Enter an array: ').split()))
-duplicates: List[int] = []
+numbers = list(map(int, input('Enter an array: ').split()))
+duplicates = []
 
 for number in numbers:
-    entrance_counter: int = 0
+    entrance_counter = 0
 
     for nested_number in numbers:
         if nested_number == number:
