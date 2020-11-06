@@ -1,17 +1,28 @@
 def merge_list(a, b):
-    merged = a + b
+    merged = []
 
-    for i in range(len(merged)):
-        for w in range(len(merged) - 1):
-            if merged[w] < merged[w + 1]:
-                e = merged[w]
-                merged[w] = merged[w + 1]
-                merged[w + 1] = e
+    i = j = 0
+
+    while i < len(a) or j < len(b):
+        if i == len(a):
+            merged += b
+            break
+        elif j == len(b):
+            merged += a
+            break
+
+        if a[i] > b[j]:
+            merged.append(a[i])
+            i += 1
+
+        elif b[j] > a[i]:
+            merged.append(b[j])
+            j += 1
 
     return merged
 
 
-a = [21, 45, 65, 43, 31, 567, 89, 10]
-b = [-21, -45, 90000000, -43, -31, -567, -89, -10]
+a = [10, 8, 6, 4]
+b = [-2, -4, -6, -8, -10]
 
 print(merge_list(a, b))
