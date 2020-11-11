@@ -11,12 +11,12 @@ for idx, item in enumerate(array):
 
     if sub_array[0] == item:
         sliced = array[idx:idx+len(sub_array)]
-        print(sliced, sub_array)
+
         for s_idx, s_item in enumerate(sliced):
             if s_item != sub_array[s_idx]:
                 break
 
-            is_subset = True
+        is_subset = True
 
         break
 
