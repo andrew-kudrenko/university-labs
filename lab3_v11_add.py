@@ -2,10 +2,10 @@ from typing import List
 
 letters: List[str] = input('Enter a sequence of letters: ').split()
 
-for idx, letter in enumerate(letters):
-    for shifted_idx, shifted_letter in enumerate(letters):
-        if letter < shifted_letter:
-            letters[idx], letters[shifted_idx] = letters[shifted_idx], letters[idx]
+for i in range(len(letters) - 1):
+    for j in range(len(letters) - 1 - i):
+        if letters[j + 1] < letters[j]:
+            letters[j + 1], letters[j] = letters[j], letters[j + 1]
 
 ordered: List[str] = []
 duplicates: List[str] = []
