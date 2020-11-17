@@ -40,7 +40,7 @@ def write_shuffled(out_filepath: str, files: List[str]) -> None:
 
     with open(out_filepath, mode='w') as out_file:
         for line in iterate_line_getters(iterators):
-            out_file.write(line)
+            out_file.write(line[0])
 
 
 def resolve_paths(file_names: Union[List[str], str], dir_name: str) -> List[str]:
