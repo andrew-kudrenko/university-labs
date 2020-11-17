@@ -28,13 +28,9 @@ else:
     concatenated: str = ''
 
     prev_symbol = ''
-    words_counter = 0
     replaced_whitespace_index: int = 0
 
     for i, symbol in enumerate(input_data):
-        if symbol == ' ' and prev_symbol != ' ' or symbol != ' ' and i == len(input_data) - 1:
-            words_counter += 1
-
         if symbol != ' ':
             concatenated += symbol
         elif replaced_whitespace_index == 0 and words_counter == 1:
