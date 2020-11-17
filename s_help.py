@@ -2,6 +2,7 @@ def fill_matrix(matrix, rows, cols):
     print('Enter a matrix')
 
     for row in range(rows):
+        print()
         for col in range(cols):
             matrix[row][col] = int(input('> '))
 
@@ -24,4 +25,4 @@ for col in range(cols):
     if sum_of_col > max_sum:
         max_sum = sum_of_col
 
-print(max_sum)
+print(f'Max sum equals {max_sum}')
