@@ -14,4 +14,4 @@ while current != 0:
 
     index += 1
 
-print(f'Max value equals {max_value}\nFound by index {max_index}')
+print(f'Max value equals {max_value}\nFound by index {max_index + 1}')
