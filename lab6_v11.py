@@ -2,7 +2,7 @@ from typing import Dict, List
 
 
 def has_all_exclude_first(player: str, trophies: Dict[str, List[str]]) -> bool:
-    for i, key in enumerate(list(trophies.keys())):
+    for i, key in enumerate(trophies.keys()):
         if i == 0:
             if player in trophies[key]:
                 return False
@@ -15,7 +15,7 @@ def has_all_exclude_first(player: str, trophies: Dict[str, List[str]]) -> bool:
     return True
 
 
-def parse_input_to_dict(data: str) -> Dict[str, List[str]]:
+def parse_input(data: str) -> Dict[str, List[str]]:
     key, values = data.split(':')
     trimmed_values: List[str] = list(map(lambda s: s.strip(), values.split(',')))
 
@@ -26,33 +26,48 @@ def get_key(index: int, dict: Dict) -> any:
     return list(dict.keys())[index]
 
 
-trophies: Dict[str, List[str]] = {}
-players: List[str] = []
+def filter_players(players: List[str], trophies: Dict[str, List[str]]) -> List[str]:
+    found: List[str] = []
 
-rows: int = int(input('Enter rows count: '))
-found: List[str] = []
+    for p in players:
+        has = has_all_exclude_first(p, trophies)
+
+        if has and p not in found:
+            found.append(p)
+
+    return found
+
+
+def input_dict(rows: int):
+    trophies = {}
+
+    for i in range(rows):
+        current: str = input('> ')
+        parsed = parse_input(current)
+        key: str = get_key(0, parsed)
+
+        trophies[key] = parsed[key]
+
+    return trophies
+
+
+def extract_players(trophies: Dict[str, List[str]]) -> List[str]:
+    players: List[str] = []
+
+    for _, key in enumerate(trophies):
+        for player in trophies[key]:
+            if player not in players:
+                players.append(player)
+
+    return players
+
 
 print('Enter rows for creating a dictionary')
 
-for i in range(rows):
-    current: str = input('> ')
-    parsed = parse_input_to_dict(current)
-    key: str = get_key(0, parsed)
+trophies: Dict[str, List[str]] = input_dict(int(input('Enter rows count: ')))
+players: List[str] = extract_players(trophies)
 
-    trophies[key] = parsed[key]
-    players += parsed[key]
-
-
-print(f'Dictionary: {trophies}')
-print(f'Players: {players}')
-
-for p in players:
-    has = has_all_exclude_first(p, trophies)
-
-    if has:
-        found.append(p)
-
-print(f'Has all, exclude first: {found}')
+print(f'Has all, exclude first: {filter_players(players, trophies)}')
 
 # Excepts string as 'key: 0, 1, 2, 3, 4'
 # [key]: [values, separated by comma]
