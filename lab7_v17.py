@@ -14,6 +14,13 @@ def find_repeats_for(count, lines):
     return found
 
 
+def find_repeats_for_line(count, line):
+    repeats = {}
+
+    for word in line.split():
+        repeats[word] = 1 if word not in repeats else repeats[word] + 1
+        
+
 def filter_repeats(repeats, lines):
     filtered = []
 
