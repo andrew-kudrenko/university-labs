@@ -1,13 +1,13 @@
-file = open('assets/star_named_sun.txt')
+file = open("assets/I will not betray myself.txt")
+file2 = open("assets/result.txt", "w")
 
-min_length = min_index = -1
+lines = file.readlines()
+last_string = lines[-1:]
 
-for i, row in enumerate(file):
-    if len(row) < min_length or min_index == -1:
-        min_length = len(row)
-        min_index = i
+print(last_string)
 
-
-print(f'Minimal length equals {min_length} Found by index {min_index}')
+for i, row in enumerate(lines):
+    file2.write(lines[len(lines) - i - 1])
 
 file.close()
+file2.close()
