@@ -1,23 +1,33 @@
-array = list(map(int, input('Enter an array: ').split()))
-sub_array = list(map(int, input('Enter an sub array: ').split()))
+string: str = input('Enter a string: ')
+substring: str = input('Enter the substring: ')
+new_substring: str = input('Enter a new substring: ')
 
-intersected = False
-is_subset = False
+matched: bool = False
 
-for idx, item in enumerate(array):
-    if not sub_array:
-        is_subset = True
-        break
+word_start: int = 0
+word_end: int = 0
 
-    if sub_array[0] == item:
-        sliced = array[idx:idx+len(sub_array)]
+result: str = ''
 
-        for s_idx, s_item in enumerate(sliced):
-            if s_item != sub_array[s_idx]:
-                break
+i: int = 0
 
-        is_subset = True
+while i < len(string):
+    word_start = i
 
-        break
+    for j in range(len(substring)):
+        if string[i + j] != substring[j]:
+            matched = False
+            break
 
-print(f'{"Является" if is_subset else "Не является"} подмассивом')
+        if j == len(substring) - 1:
+            matched = True
+            word_end = j + i
+
+    if matched:
+        i = word_end + 1
+        result += new_substring
+    else:
+        result += string[i]
+        i += 1
+
+print(f'Edited string: {result}')
