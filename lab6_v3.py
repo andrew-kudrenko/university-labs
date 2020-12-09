@@ -5,11 +5,11 @@ def get_input():
     data_lines = []
     dict_lines = []
 
-    print('Dict input')
+    print('Dict input. Don\t forget about commas! Input format [Country]: City0, City1, CityN')
     for i in range(dict_lines_number):
         dict_lines.append(input('> '))
 
-    print('Data input')
+    print('Data input. Input format [City]')
     for i in range(data_lines_number):
         data_lines.append(input('> '))
 

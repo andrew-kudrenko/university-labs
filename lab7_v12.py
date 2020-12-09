@@ -21,7 +21,7 @@ def reverse_list(iterable):
 
 
 def write_result(filename, sequence):
-    file = open(filename, mode='w')
+    file = open(filename, mode='w', encoding="utf-8")
 
     for symbol in sequence:
         file.write(symbol)
