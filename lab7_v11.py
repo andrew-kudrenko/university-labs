@@ -3,7 +3,7 @@ from os import path
 
 
 # Similar to cycle() from itertools
-def infinity_iterator(iterable: List[any]) -> Tuple[int, any]:
+def infinity_iterator(iterable: List[any]) -> Generator[Tuple[int, any], None, None]:
     i: int = 0
     length: int = len(iterable)
 
