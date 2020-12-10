@@ -3,7 +3,7 @@ def create_dict(lines):
 
     for line in lines:
         key, value = line.split(':')
-        total[key.strip()] = [int(value)]
+        total[key.strip()] = int(value)
 
     return total
 
@@ -18,7 +18,7 @@ def find_max_amount(data):
     return max_amount[0]
 
 
-print('Expect data in format [Name]: Amount')
+print('Enter 0 for terminating. Expect data in format [Name]: Amount')
 
 current_row = ''
 lines = []
