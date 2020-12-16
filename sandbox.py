@@ -12,10 +12,10 @@ def take_above(matrix, side=False):
     return taken
 
 
-def add_above_main(matrix):
+def add_above_side(matrix):
     sum = 0
 
-    for item in take_above(matrix):
+    for item in take_above(matrix, True):
         sum += item
 
     return sum
@@ -29,4 +29,4 @@ cols = int(input('Cols = '))
 matrix = np.random.randint(1, 10, (rows, cols))
 
 print('Initial matrix\n', matrix)
-print(f'Summary equals {add_above_main(matrix)}')
+print(f'Summary equals {add_above_side(matrix)}')
