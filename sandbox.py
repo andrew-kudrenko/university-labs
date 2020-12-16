@@ -1,27 +1,32 @@
-row = int(input('Введите количество строк: '))
-column = int(input('Введите количество столбцов: '))
-place = int(input('Введите номер строки, куда нужно будет вставить новую: '))
+import numpy as np
 
-matrix = []
-str_add = []
 
-for i in range(row):
-    matrix.append([])
-    for j in range(column):
-        matrix[i].append(int(input('Введите элемент строки: ')))
+def take_above(matrix, side=False):
+    taken = []
 
-print('Введите строку для вставки')
-for i in range(column):
-    str_add.append(int(input('Введите элемент строки: ')))
+    for y in range(len(matrix)):
+        for x in range(len(matrix[y])):
+            if (not side and (x > y)) or (side and (x < len(matrix) - y - 1)):
+                taken.append(matrix[y][x])
 
-array_two = []
+    return taken
 
-i = 0
-while i < row:
-    if i == place:
-        array_two.append(str_add)
 
-    array_two.append(matrix[i])
-    i += 1
+def add_above_main(matrix):
+    sum = 0
 
-print(array_two)
+    for item in take_above(matrix):
+        sum += item
+
+    return sum
+
+
+print('Size of matrix')
+
+rows = int(input('Rows = '))
+cols = int(input('Cols = '))
+
+matrix = np.random.randint(1, 10, (rows, cols))
+
+print('Initial matrix\n', matrix)
+print(f'Summary equals {add_above_main(matrix)}')

@@ -4,7 +4,7 @@ def dict_from_sequence(sequence):
     for number in sequence:
         for digit in str(number):
             if int(digit) in digits:
-                digits[int(digits)] = True
+                digits[int(digit)] = True
 
     return digits
 
@@ -13,8 +13,8 @@ def extract_unique(digits):
     unique = []
 
     for key in digits:
-        if digits[key]:
-            unique.append(digits[key])
+        if not digits[key]:
+            unique.append(key)
 
     return unique
 
