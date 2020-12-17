@@ -33,14 +33,28 @@ def unprofitable(data):
     return result
 
 
-lines = [
-    'A: 1000 890 2001',
-    'C: 800 1200 1999',
-    'B: 900 900 2000',
-    'B: 750 900 2007',
-    'C: 850 1000 2004',
-    'A: 1500 450 1998'
-]
+# lines = [
+#     'A: 1000 890 2001',
+#     'C: 800 1200 1999',
+#     'B: 900 900 2000',
+#     'B: 750 900 2007',
+#     'C: 850 1000 2004',
+#     'A: 1500 450 1998',
+#     '0'
+# ]
+
+print('Enter data in format [City]: [Profit] [Outlay] [Year]')
+
+lines = []
+input_has_ended = False
+
+while not input_has_ended:
+    current = input('> ')
+
+    if current.strip() == '0':
+        input_has_ended = True
+    else:
+        lines.append(current)
 
 city, year, lost = unprofitable(to_dict(lines))
 
