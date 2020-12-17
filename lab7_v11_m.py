@@ -20,7 +20,7 @@ def read_files(filenames: str) -> List[List[str]]:
     return read
 
 
-def write_result(filename: str, collections: List[List[str]]):
+def write_result(filename: str, collections: List[List[str]]) -> None:
     file = open(filename, 'w', encoding='utf-8')
     conditions = [False for _ in collections]
     pointers = [0 for _ in collections]
