@@ -1,12 +1,18 @@
-user_string = input('Введите строку: ')
-user_word = input('Введите слово: ')
+def filter_even(numbers):
+    filtered = []
 
-vowels = 'ёуеыаоэяию'
-intersections = ''
+    for number in numbers:
+        if number % 2 != 0:
+            filtered.append(number)
 
-for letter in vowels:
-    lowed = letter.lower()
-    if (lowed in user_string) and (lowed in user_word):
-        intersections += letter
+    return numbers
 
-print(intersections)
+
+numbers = [int(item) for item in input('Введите числа: ').split()]
+print('Обработанный список', sorted(filter_even(numbers)))
+
+
+# Назначение: Отлильтровать список от четных элементов
+# Параметры:
+#   numbers - список чисел для фильтрации
+# Возвращаемое значение: Новый список чисел без четных элементов
