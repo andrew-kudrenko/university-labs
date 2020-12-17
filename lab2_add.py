@@ -1,5 +1,5 @@
 def balance(a, b):
-    if a > b:
+    if len(a) > len(b):
         for i in range(len(b), len(a)):
             b += a[i]
     else:
@@ -9,8 +9,8 @@ def balance(a, b):
     return a, b
 
 
-a = 'ABCDEF'
-b = 'GHIJKLMNOPQR'
+a = input('First string: ')
+b = input('Second string: ')
 
 a, b = balance(a, b)
 
