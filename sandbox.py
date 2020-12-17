@@ -5,7 +5,7 @@ def filter_even(numbers):
         if number % 2 != 0:
             filtered.append(number)
 
-    return numbers
+    return filtered
 
 
 numbers = [int(item) for item in input('Введите числа: ').split()]
