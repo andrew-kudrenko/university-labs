@@ -1,30 +1,32 @@
 import numpy as np
 
 
-def take_above(matrix, side=False):
+def take(matrix, side=False, below=False):
     taken = []
 
     for y in range(len(matrix)):
         for x in range(len(matrix[y])):
-            if (not side and (x > y)) or (side and (x < len(matrix) - y - 1)):
+            computed = len(matrix) - y - 1
+
+            if (not side and (x < y if below else x > y)) or (side and (x > computed if below else x < computed)):
                 taken.append(matrix[y][x])
 
     return taken
 
 
-def add_above_main(matrix):
+def add(matrix, side=False, below=False):
     sum = 0
 
-    for item in take_above(matrix):
+    for item in take(matrix, side, below):
         sum += item
 
     return sum
 
 
-def mult_above_side(matrix):
+def mult(matrix, side=False, below=False):
     product = 1
 
-    for item in take_above(matrix, True):
+    for item in take(matrix, side, below):
         product *= item
 
     return product
@@ -38,4 +40,4 @@ cols = int(input('Cols = '))
 matrix = np.random.randint(1, 10, (rows, cols))
 
 print('Initial matrix\n', matrix)
-print(f'Summary equals {add_above_main(matrix)}\nProduct equals {mult_above_side(matrix)}')
+print(f'Summary below main equals {add(matrix, below=True)}\nSummary above side equals {add(matrix, side=True)}')

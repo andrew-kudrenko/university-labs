@@ -36,7 +36,6 @@ def order(sequence: List[int]) -> List[int]:
             if ordered[j] > ordered[j + 1]:
                 ordered[j + 1], ordered[j] = ordered[j], ordered[j + 1]
 
-
     return ordered
 
 

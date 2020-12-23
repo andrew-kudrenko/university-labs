@@ -12,6 +12,7 @@ def remove_col(matrix, target):
 
     return handled
 
+
 example = [
     [0, 1, 2, 3],
     [0, 1, 2, 3],
