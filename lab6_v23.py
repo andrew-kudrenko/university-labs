@@ -1,23 +1,28 @@
 def dict_from_sequence(sequence):
-    digits = {key: False for key in range(10)}
+    digits = {key: 0 for key in range(10)}
 
     for number in sequence:
-        for digit in str(number):
-            if int(digit) in digits:
-                digits[int(digit)] = True
+        value = str(number)
 
+        for digit in str(number):
+            if (value >= '0') and (value <= '9'):
+                key = int(digit)
+
+                if key in digits:
+                    digits[key] += 1
+    print(digits)
     return digits
 
 
-def extract_unique(digits):
-    unique = []
+def freq_than(digits, count=2):
+    extracted = []
 
     for key in digits:
-        if not digits[key]:
-            unique.append(key)
+        if digits[key] > count:
+            extracted.append(key)
 
-    return unique
+    return extracted
 
 
-sequence = [value for value in input('Enter a sequence: ').split()]
-print(extract_unique(dict_from_sequence(sequence)))
+sequence = [int(value) for value in input('Enter a sequence: ').split()]
+print(freq_than(dict_from_sequence(sequence)))
